@@ -1,0 +1,14 @@
+D:\Projects\SAGRHA\SAGRHA.API\bin\Debug\netcoreapp2.2\SAGRHA.API.deps.json
+D:\Projects\SAGRHA\SAGRHA.API\bin\Debug\netcoreapp2.2\SAGRHA.API.runtimeconfig.json
+D:\Projects\SAGRHA\SAGRHA.API\bin\Debug\netcoreapp2.2\SAGRHA.API.runtimeconfig.dev.json
+D:\Projects\SAGRHA\SAGRHA.API\bin\Debug\netcoreapp2.2\SAGRHA.API.dll
+D:\Projects\SAGRHA\SAGRHA.API\bin\Debug\netcoreapp2.2\SAGRHA.API.pdb
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.csprojAssemblyReference.cache
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.csproj.CoreCompileInputs.cache
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.RazorAssemblyInfo.cache
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.RazorAssemblyInfo.cs
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.AssemblyInfoInputs.cache
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.AssemblyInfo.cs
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.RazorTargetAssemblyInfo.cache
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.dll
+D:\Projects\SAGRHA\SAGRHA.API\obj\Debug\netcoreapp2.2\SAGRHA.API.pdb
