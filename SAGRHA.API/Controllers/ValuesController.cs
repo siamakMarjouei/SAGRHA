@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAGRHA.API.Data;
 
 namespace SAGRHA.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -27,6 +29,8 @@ namespace SAGRHA.API.Controllers
             return Ok(values);
         }
 
+        //Example of unotharized request but this is silly and only for example 
+        [AllowAnonymous]
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
