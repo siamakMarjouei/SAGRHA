@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using SAGRHA.API.Data;
 
 namespace SAGRHA.API
@@ -26,7 +20,7 @@ namespace SAGRHA.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<DataContext>(x => x.("ConnectionString"));
+            services.AddDbContext<DataContext>(x => x.UseMySql("ConnectionString"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -40,10 +34,12 @@ namespace SAGRHA.API
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                //TODO turn off for now app.UseHsts();
+                //TODO turn off for now 
+                //app.UseHsts();
             }
 
-            //TODO for now dont use HTTPS app.UseHttpsRedirection();
+            //TODO for now dont use HTTPS 
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
