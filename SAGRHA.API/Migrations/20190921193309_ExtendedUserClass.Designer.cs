@@ -9,7 +9,7 @@ using SAGRHA.API.Data;
 namespace SAGRHA.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190921092609_ExtendedUserClass")]
+    [Migration("20190921193309_ExtendedUserClass")]
     partial class ExtendedUserClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -89,9 +89,10 @@ namespace SAGRHA.API.Migrations
 
             modelBuilder.Entity("SAGRHA.API.Models.Photo", b =>
                 {
-                    b.HasOne("SAGRHA.API.Models.User")
+                    b.HasOne("SAGRHA.API.Models.User", "User")
                         .WithMany("Photo")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

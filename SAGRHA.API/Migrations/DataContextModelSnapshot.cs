@@ -30,7 +30,7 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -87,9 +87,10 @@ namespace SAGRHA.API.Migrations
 
             modelBuilder.Entity("SAGRHA.API.Models.Photo", b =>
                 {
-                    b.HasOne("SAGRHA.API.Models.User")
+                    b.HasOne("SAGRHA.API.Models.User", "User")
                         .WithMany("Photo")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
