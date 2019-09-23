@@ -9,7 +9,7 @@ namespace SAGRHA.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Employee",
+                name: "Employees",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -20,17 +20,17 @@ namespace SAGRHA.API.Migrations
                     PlaceOfBirth = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     DNI = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
-                    Cell = table.Column<int>(nullable: false),
+                    Phone = table.Column<string>(nullable: true),
+                    Cell = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     AFP = table.Column<string>(nullable: true),
-                    CUA = table.Column<int>(nullable: false),
+                    CUA = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Profession = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employee", x => x.Id);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,9 +48,9 @@ namespace SAGRHA.API.Migrations
                 {
                     table.PrimaryKey("PK_Children", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Children_Employee_EmployeeId",
+                        name: "FK_Children_Employees_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employee",
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -65,8 +65,8 @@ namespace SAGRHA.API.Migrations
                     Lastname = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
-                    Cell = table.Column<int>(nullable: false),
+                    Phone = table.Column<string>(nullable: true),
+                    Cell = table.Column<string>(nullable: true),
                     Relationship = table.Column<string>(nullable: true),
                     IsEmergency = table.Column<bool>(nullable: false),
                     EmployeeId = table.Column<int>(nullable: false)
@@ -75,9 +75,9 @@ namespace SAGRHA.API.Migrations
                 {
                     table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contacts_Employee_EmployeeId",
+                        name: "FK_Contacts_Employees_EmployeeId",
                         column: x => x.EmployeeId,
-                        principalTable: "Employee",
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -102,7 +102,7 @@ namespace SAGRHA.API.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "Employee");
+                name: "Employees");
         }
     }
 }

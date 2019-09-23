@@ -9,7 +9,7 @@ using SAGRHA.API.Data;
 namespace SAGRHA.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190923034514_EmployeeChildrenAndContact")]
+    [Migration("20190923050932_EmployeeChildrenAndContact")]
     partial class EmployeeChildrenAndContact
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<int>("Cell");
+                    b.Property<string>("Cell");
 
                     b.Property<string>("City");
 
@@ -58,7 +58,7 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Phone");
+                    b.Property<string>("Phone");
 
                     b.Property<string>("Relationship");
 
@@ -78,9 +78,9 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<int>("CUA");
+                    b.Property<string>("CUA");
 
-                    b.Property<int>("Cell");
+                    b.Property<string>("Cell");
 
                     b.Property<string>("DNI");
 
@@ -94,7 +94,7 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Phone");
+                    b.Property<string>("Phone");
 
                     b.Property<string>("PlaceOfBirth");
 
@@ -102,7 +102,7 @@ namespace SAGRHA.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("SAGRHA.API.Models.Photo", b =>

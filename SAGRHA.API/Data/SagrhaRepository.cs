@@ -7,10 +7,10 @@ using SAGRHA.API.Models;
 namespace SAGRHA.API.Data
 {
 
-    public class DatingRepository : IDatingRepository
+    public class SagrhaRepository : ISagrhaRepository
     {
         private readonly DataContext _context;
-        public DatingRepository(DataContext context)
+        public SagrhaRepository(DataContext context)
         {
             _context = context;
 
@@ -25,14 +25,14 @@ namespace SAGRHA.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<User> GetUser(int id)
+        public async Task<User> GetById(int id)
         {
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<User>> GetAll()
         {
             var users = await _context.Users.Include(p => p.Photos).ToListAsync();
             

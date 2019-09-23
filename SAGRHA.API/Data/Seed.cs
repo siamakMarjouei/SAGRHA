@@ -9,10 +9,13 @@ namespace SAGRHA.API.Data
     {
         public static void SeedUsers(DataContext context)
         {
-            if(!context.Users.Any())
+            if(!context.Users.Any() && !context.Employees.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
                 var users = JsonConvert.DeserializeObject<List<User>>(userData);
+                var employeeData = System.IO.File.ReadAllText("Data/EmployeeSeedData.json");
+                var employees = JsonConvert.DeserializeObject<List<Employee>>(employeeData);
+
                 foreach (var user in users)
                 {
                     byte[] passwordHash, passwordSalt;
@@ -22,9 +25,12 @@ namespace SAGRHA.API.Data
                     user.PasswordSalt = passwordSalt;
                     user.Username = user.Username.ToLower();
                     context.Users.Add(user);
-
                 }
-
+                foreach (var employee in employees)
+                {
+                    context.Employees.Add(employee);
+                }
+                
                 context.SaveChanges();
             }
         }

@@ -5,12 +5,12 @@ using SAGRHA.API.Models;
 //TODO change this Interface and implementation to current program
 namespace SAGRHA.API.Data
 {
-    public interface IDatingRepository
+    public interface ISagrhaRepository
     {
          void Add<T>(T entity) where T: class;
          void Delete<T>(T entity) where T: class;
          Task<bool> SaveAll();
-         Task<IEnumerable<User>> GetUsers();
-         Task<User> GetUser(int id);
+         Task<IEnumerable<User>> GetAll();
+         Task<User> GetById(int id);
     }
 }

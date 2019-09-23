@@ -12,11 +12,11 @@ namespace SAGRHA.API.Models
         public string PlaceOfBirth { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string DNI { get; set; }
-        public int Phone { get; set; }
-        public int Cell { get; set; }
+        public string Phone { get; set; }
+        public string Cell { get; set; }
         public string Email { get; set; }
         public string AFP { get; set; }
-        public int CUA { get; set; }
+        public string CUA { get; set; }
         public string Address { get; set; }
         public string Profession { get; set; }
         public ICollection<Child> Children { get; set; }
