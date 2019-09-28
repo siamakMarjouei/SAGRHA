@@ -12,5 +12,7 @@ namespace SAGRHA.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetAll();
          Task<User> GetById(int id);
+         Task<Photo> GetPhoto(int id);
+         Task<Photo> GetMainPhotoForUser(int userId);
     }
 }

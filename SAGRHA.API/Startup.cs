@@ -36,6 +36,7 @@ namespace SAGRHA.API
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             //TODO change AutoMapper typeof Class Dating to the sagrha program
             services.AddAutoMapper(typeof(SagrhaRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
