@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAGRHA.API.Data;
 using SAGRHA.API.Dtos;
+using SAGRHA.API.Helpers;
 
 namespace SAGRHA.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
