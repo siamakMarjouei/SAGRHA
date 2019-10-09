@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SAGRHA.API.Helpers;
 using SAGRHA.API.Models;
 
 //TODO Change this Repository and IDatingRepository to current program
@@ -33,11 +34,15 @@ namespace SAGRHA.API.Data
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<PagedList<User>> GetAll(UserParams userParams)
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            
-            return users;
+            var users = _context.Users.Include(p => p.Photos).AsQueryable();
+
+            users = users.Where(u => u.Id != userParams.UserId);
+
+            users = users.Where(u => u.Gender == userParams.Gender);
+
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
@@ -54,8 +59,9 @@ namespace SAGRHA.API.Data
 
         public async Task<Photo> GetMainPhotoForUser(int userId)
         {
-            return await _context.Photos.Where( u => u.UserId == userId)
+            return await _context.Photos.Where(u => u.UserId == userId)
                 .FirstOrDefaultAsync(p => p.IsMain);
         }
+
     }
 }
