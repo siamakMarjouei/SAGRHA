@@ -27,14 +27,14 @@ namespace SAGRHA.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
-        public async Task<PagedList<User>> GetAll(UserParams userParams)
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
             var users = _context.Users.Include(p => p.Photos).AsQueryable();
 
@@ -63,5 +63,12 @@ namespace SAGRHA.API.Data
                 .FirstOrDefaultAsync(p => p.IsMain);
         }
 
+        public async Task<bool> EmployeeExist(string DNI)
+        {
+            if (await _context.Employees.AnyAsync(e => e.DNI == DNI))
+                return true;
+            return false;
+
+        }
     }
 }

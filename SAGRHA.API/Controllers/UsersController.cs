@@ -31,7 +31,7 @@ namespace SAGRHA.API.Controllers
         {
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userFromRepo = await _repo.GetById(currentUserId);
+            var userFromRepo = await _repo.GetUser(currentUserId);
 
             userParams.UserId = currentUserId;
 
@@ -39,7 +39,7 @@ namespace SAGRHA.API.Controllers
             {
                 userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
             }
-            var users = await _repo.GetAll(userParams);
+            var users = await _repo.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
@@ -52,7 +52,7 @@ namespace SAGRHA.API.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
-            var user = await _repo.GetById(id);
+            var user = await _repo.GetUser(id);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
@@ -65,7 +65,7 @@ namespace SAGRHA.API.Controllers
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var userFromRepo = await _repo.GetById(id);
+            var userFromRepo = await _repo.GetUser(id);
 
             _mapper.Map(userForUpdatesDto, userFromRepo);
 

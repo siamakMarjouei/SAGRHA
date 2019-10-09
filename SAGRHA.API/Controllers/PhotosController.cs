@@ -59,7 +59,7 @@ namespace SAGRHA.API.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var userFromRepo = await _repo.GetById(userId);
+            var userFromRepo = await _repo.GetUser(userId);
 
             var file = photoForCreationDto.File;
 
@@ -105,7 +105,7 @@ namespace SAGRHA.API.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var user = await _repo.GetById(userId);
+            var user = await _repo.GetUser(userId);
 
             if (!user.Photos.Any(p => p.Id == id))
                 return Unauthorized();
@@ -131,7 +131,7 @@ namespace SAGRHA.API.Controllers
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-            var user = await _repo.GetById(userId);
+            var user = await _repo.GetUser(userId);
 
             if (!user.Photos.Any(p => p.Id == id))
                 return Unauthorized();
