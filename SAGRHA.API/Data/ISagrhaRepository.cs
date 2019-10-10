@@ -15,6 +15,7 @@ namespace SAGRHA.API.Data
          Task<User> GetUser(int id);
          Task<Photo> GetPhoto(int id);
          Task<Photo> GetMainPhotoForUser(int userId);
+         Task<List<Employee>> GetEmployees();
          Task<bool> EmployeeExist(string DNI);
          
     }

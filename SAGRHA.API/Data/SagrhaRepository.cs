@@ -45,6 +45,12 @@ namespace SAGRHA.API.Data
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
+        public async Task<List<Employee>> GetEmployees()
+        {
+            return await _context.Employees.ToListAsync();
+            
+        }
+
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
@@ -70,5 +76,6 @@ namespace SAGRHA.API.Data
             return false;
 
         }
+
     }
 }

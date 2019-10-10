@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -36,6 +37,15 @@ namespace SAGRHA.API.Controllers
                 return StatusCode(201);
 
             return BadRequest("Could not create employee");
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetEmployees()
+        {
+             var employees = await _repo.GetEmployees();
+
+             var employeesToReturn =  _mapper.Map<List<EmployeesForListDto>>(employees);
+
+             return Ok(employeesToReturn); 
         }
 
 
