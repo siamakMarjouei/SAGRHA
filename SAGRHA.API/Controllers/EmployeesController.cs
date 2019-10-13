@@ -48,6 +48,16 @@ namespace SAGRHA.API.Controllers
              return Ok(employeesToReturn); 
         }
 
+        [HttpGet("{id}", Name="GetEmployee")]
+        public async Task<IActionResult> GetEmployee(int id)
+        {
+            var employee = await _repo.GetEmployee(id);
+
+            var employeeToReturn = _mapper.Map<EmployeesForListDto>(employee);
+
+            return Ok(employeeToReturn);
+        }
+
 
 
 

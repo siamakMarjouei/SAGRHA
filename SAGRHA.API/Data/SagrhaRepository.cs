@@ -77,5 +77,9 @@ namespace SAGRHA.API.Data
 
         }
 
+        public async Task<Employee> GetEmployee(int id)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Id==id);
+        }
     }
 }

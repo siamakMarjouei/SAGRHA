@@ -26,16 +26,19 @@ export class UserService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params})
-    .pipe(
-      map(response => {
-        paginatedResult.result = response.body;
-        if(response.headers.get('Pagination')!= null){
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
-        }
-        return paginatedResult;
-      })
-    )
+    return this.http
+      .get<User[]>(this.baseUrl + 'users', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')
+            );
+          }
+          return paginatedResult;
+        })
+      );
   }
 
   getUser(id): Observable<User> {
