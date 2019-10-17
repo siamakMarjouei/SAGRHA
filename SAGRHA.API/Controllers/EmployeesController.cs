@@ -34,7 +34,11 @@ namespace SAGRHA.API.Controllers
             _repo.Add(employeeToCreate);
 
             if(await _repo.SaveAll())
-                return StatusCode(201);
+            {
+                var employeeToReturn = _mapper.Map<EmployeesForListDto>(employeeToCreate);
+                return Ok(employeeToReturn);
+            }
+                
 
             return BadRequest("Could not create employee");
         }
