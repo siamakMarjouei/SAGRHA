@@ -40,6 +40,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { EmployeeGridComponent } from './employees/employee-grid/employee-grid.component';
+import { EmployeeCardComponent } from './employees/employee-card/employee-card.component';
 
 
 export function tokenGetter() {
@@ -68,7 +69,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     PhotoEditorComponent,
     TimeAgoPipe,
     EmployeeListComponent,
-    EmployeeGridComponent
+    EmployeeGridComponent,
+    EmployeeCardComponent
   ],
   imports: [
     BrowserModule,
@@ -83,8 +85,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
     FileUploadModule,
-    MultiSelectModule,
     TableModule,
+    MultiSelectModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,

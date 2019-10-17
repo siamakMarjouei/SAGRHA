@@ -1,0 +1,44 @@
+<div class="card mb-4">
+  <div class="card-img-wrapper">
+    <img
+      class="card-img-top"
+      src="{{ users.photoUrl || '../../../assets/user.png' }}"
+      alt="{{ employee.name }}"
+    />
+    <ul class="list-inline member-icons animate text-center">
+      <li class="list-inline-item">
+        <button
+          class="btn btn-primary"
+          [routerLink]="['/employee/', employee.id]"
+        >
+          <i class="fa fa-user"></i>
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary"><i class="fa fa-envelope"></i></button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body p-1">
+    <h6 class="card-title text-center mb-1">
+      <i class="fa fa-user"></i> {{ employee.name }}, {{ employee.lastName }}
+    </h6>
+    <p class="card-text text-left">
+      <i class="fa fa-id-card" aria-hidden="true"></i> {{ employee.dni }}
+    </p>
+    <p class="card-text text-left">
+      <i class="fa fa-university" aria-hidden="true"></i> {{ employee.afp }}
+    </p>
+    <p class="card-text text-left">
+      <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+      {{ employee.dateOfBirth }}
+    </p>
+    <p class="card-text text-left">
+      <i class="fa fa-users" ></i>
+        {{employee.children}}
+    </p>
+    <p class="card-text text-muted text-center">
+      <i class="fa fa-briefcase"></i> {{ employee.profession }}
+    </p>
+  </div>
+</div>
