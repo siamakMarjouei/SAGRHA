@@ -13,6 +13,6 @@ namespace SAGRHA.API.Models
         public string Dni { get; set; }
         public Employee Employee { get; set; }
         public int EmployeeId { get; set; }
-        public RelationTypeCatalog RelationTypeCatalogId { get; set; }
+        public virtual RelationTypeCatalog RelationTypeCatalog { get; set; }
     }
 }
