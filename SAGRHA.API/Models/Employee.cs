@@ -19,7 +19,8 @@ namespace SAGRHA.API.Models
         public string CUA { get; set; }
         public string Address { get; set; }
         public string Profession { get; set; }
-        public ICollection<Child> Children { get; set; }
+        public ICollection<Relative> Relatives { get; set; }
+        
 
 
     }

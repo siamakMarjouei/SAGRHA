@@ -81,5 +81,12 @@ namespace SAGRHA.API.Data
         {
             return await _context.Employees.FirstOrDefaultAsync(e => e.Id==id);
         }
+
+        public async Task<Relative> GetRelative(int id)
+        {
+            var relative = await _context.Relatives.FirstOrDefaultAsync(r => r.Id == id);
+
+            return relative;
+        }
     }
 }

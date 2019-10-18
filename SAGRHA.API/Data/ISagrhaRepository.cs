@@ -20,6 +20,7 @@ namespace SAGRHA.API.Data
          Task<List<Employee>> GetEmployees();
          Task<Employee> GetEmployee(int id);
          Task<bool> EmployeeExist(string DNI);
+         Task<Relative> GetRelative(int id);
          
          
     }

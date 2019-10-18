@@ -11,8 +11,8 @@ namespace SAGRHA.API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Child> Children { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
-
+        public DbSet<Relative> Relatives { get; set; }
+        public DbSet<RelationTypeCatalog> RelationTypes { get; set; }
+      
     }
 }
