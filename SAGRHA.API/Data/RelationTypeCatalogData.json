@@ -1,0 +1,14 @@
+[
+    {
+        "RelationType": "Child"
+    },
+    {
+        "RelationType": "Contact"
+    },
+    {
+        "RelationType": "Heir"
+    },
+    {
+        "RelationType": "Espouse"
+    }
+]

@@ -13,8 +13,12 @@ namespace SAGRHA.API.Data
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
                 var users = JsonConvert.DeserializeObject<List<User>>(userData);
+
                 var employeeData = System.IO.File.ReadAllText("Data/EmployeeSeedData.json");
                 var employees = JsonConvert.DeserializeObject<List<Employee>>(employeeData);
+
+                var relationTypeData = System.IO.File.ReadAllText("Data/RelationTypeCatalogData.json");
+                var relationTypeCatalogData = JsonConvert.DeserializeObject<List<RelationTypeCatalog>>(relationTypeData);
 
                 foreach (var user in users)
                 {
@@ -29,6 +33,10 @@ namespace SAGRHA.API.Data
                 foreach (var employee in employees)
                 {
                     context.Employees.Add(employee);
+                }
+                foreach (var relationType in relationTypeCatalogData)
+                {
+                    context.RelationTypes.Add(relationType);
                 }
                 
                 context.SaveChanges();

@@ -9,8 +9,8 @@ using SAGRHA.API.Data;
 namespace SAGRHA.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191018041432_RelativeRelations")]
-    partial class RelativeRelations
+    [Migration("20191019063939_RelativeRelation")]
+    partial class RelativeRelation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,16 +84,9 @@ namespace SAGRHA.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
-
                     b.Property<string>("RelationType");
 
-                    b.Property<int>("RelativeId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RelativeId")
-                        .IsUnique();
 
                     b.ToTable("RelationTypes");
                 });
@@ -117,9 +110,13 @@ namespace SAGRHA.API.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<int>("RelationTypeCatalogId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("RelationTypeCatalogId");
 
                     b.ToTable("Relatives");
                 });
@@ -178,19 +175,16 @@ namespace SAGRHA.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SAGRHA.API.Models.RelationTypeCatalog", b =>
-                {
-                    b.HasOne("SAGRHA.API.Models.Relative", "Relative")
-                        .WithOne("RelationTypeCatalogId")
-                        .HasForeignKey("SAGRHA.API.Models.RelationTypeCatalog", "RelativeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("SAGRHA.API.Models.Relative", b =>
                 {
                     b.HasOne("SAGRHA.API.Models.Employee", "Employee")
                         .WithMany("Relatives")
                         .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SAGRHA.API.Models.RelationTypeCatalog", "RelationTypeCatalog")
+                        .WithMany("Relatives")
+                        .HasForeignKey("RelationTypeCatalogId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

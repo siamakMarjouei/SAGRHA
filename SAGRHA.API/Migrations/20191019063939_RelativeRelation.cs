@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SAGRHA.API.Migrations
 {
-    public partial class RelativeRelations : Migration
+    public partial class RelativeRelation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,6 +13,19 @@ namespace SAGRHA.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacts");
+
+            migrationBuilder.CreateTable(
+                name: "RelationTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    RelationType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RelationTypes", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Relatives",
@@ -26,7 +39,8 @@ namespace SAGRHA.API.Migrations
                     Address = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Dni = table.Column<string>(nullable: true),
-                    EmployeeId = table.Column<int>(nullable: false)
+                    EmployeeId = table.Column<int>(nullable: false),
+                    RelationTypeCatalogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,48 +51,32 @@ namespace SAGRHA.API.Migrations
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RelationTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    RelationType = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    RelativeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RelationTypes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RelationTypes_Relatives_RelativeId",
-                        column: x => x.RelativeId,
-                        principalTable: "Relatives",
+                        name: "FK_Relatives_RelationTypes_RelationTypeCatalogId",
+                        column: x => x.RelationTypeCatalogId,
+                        principalTable: "RelationTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RelationTypes_RelativeId",
-                table: "RelationTypes",
-                column: "RelativeId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Relatives_EmployeeId",
                 table: "Relatives",
                 column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Relatives_RelationTypeCatalogId",
+                table: "Relatives",
+                column: "RelationTypeCatalogId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RelationTypes");
+                name: "Relatives");
 
             migrationBuilder.DropTable(
-                name: "Relatives");
+                name: "RelationTypes");
 
             migrationBuilder.CreateTable(
                 name: "Children",

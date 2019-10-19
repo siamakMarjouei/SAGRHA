@@ -1,12 +1,13 @@
+using System.Collections.Generic;
+
 namespace SAGRHA.API.Models
 {
     public class RelationTypeCatalog
     {
+
         public int Id { get; set; }
         public string RelationType { get; set; }
-        public string Description { get; set; }
-        public virtual Relative Relative { get; set; }
-        public int RelativeId { get; set; }
+        public ICollection<Relative> Relatives { get; set; }
 
     }
 }
