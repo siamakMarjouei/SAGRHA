@@ -29,7 +29,8 @@ namespace SAGRHA.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(p => p.Photos)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
@@ -79,7 +80,8 @@ namespace SAGRHA.API.Data
 
         public async Task<Employee> GetEmployee(int id)
         {
-            return await _context.Employees.FirstOrDefaultAsync(e => e.Id==id);
+            return await _context.Employees.Include(r => r.Relatives)
+                .FirstOrDefaultAsync(e => e.Id==id);
         }
 
         public async Task<Relative> GetRelative(int id)
@@ -88,5 +90,6 @@ namespace SAGRHA.API.Data
 
             return relative;
         }
+
     }
 }

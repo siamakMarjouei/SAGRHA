@@ -19,6 +19,6 @@ namespace SAGRHA.API.Dtos
         public string AFP { get; set; }
         public string Address { get; set; }
         public string Profession { get; set; }
-        public ICollection<ChildToReturnDto> Children { get; set; }
+        public ICollection<RelativeToReturnDto> Relatives { get; set; }
     }
 }

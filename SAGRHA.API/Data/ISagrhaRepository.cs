@@ -14,14 +14,15 @@ namespace SAGRHA.API.Data
          
          Task<PagedList<User>> GetUsers( UserParams userParams);
          Task<User> GetUser(int id);
+        
          Task<Photo> GetPhoto(int id);
          Task<Photo> GetMainPhotoForUser(int userId);
          
          Task<List<Employee>> GetEmployees();
          Task<Employee> GetEmployee(int id);
          Task<bool> EmployeeExist(string DNI);
-         Task<Relative> GetRelative(int id);
          
+         Task<Relative> GetRelative(int id);
          
     }
 }

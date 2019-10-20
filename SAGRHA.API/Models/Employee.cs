@@ -21,7 +21,5 @@ namespace SAGRHA.API.Models
         public string Profession { get; set; }
         public ICollection<Relative> Relatives { get; set; }
         
-
-
     }
 }

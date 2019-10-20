@@ -14,20 +14,30 @@ namespace SAGRHA.API.Helpers
                 opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
                 .ForMember(dest => dest.Age,
                 opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(dest => dest.PhotoUrl,
                 opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
                 .ForMember(dest => dest.Age,
                 opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+
             CreateMap<Employee, EmployeesForListDto>()
                 .ForMember(dest => dest.Age,
                 opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+
+            CreateMap<Relative, RelativeToReturnDto>()
+            .ForMember(dest => dest.Age,
+            opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()))
+            .ForMember(dest => dest.Relationship,
+            opt => opt.MapFrom(src => src.RelationTypeCatalog.RelationType));
+
             CreateMap<Photo, PhotosForDetailedDto>();
-            CreateMap<UserForUpdatesDto, User>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<UserForUpdatesDto, User>();
             CreateMap<UserForRegisterDto, User>();
             CreateMap<EmployeeForRegisterDto, Employee>();
+            CreateMap<RelativeToReturnDto, Relative>();
         }
     }
 }
