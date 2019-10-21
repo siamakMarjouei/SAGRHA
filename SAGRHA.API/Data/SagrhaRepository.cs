@@ -49,7 +49,7 @@ namespace SAGRHA.API.Data
         public async Task<List<Employee>> GetEmployees()
         {
             return await _context.Employees.ToListAsync();
-            
+
         }
 
         public async Task<bool> SaveAll()
@@ -80,8 +80,10 @@ namespace SAGRHA.API.Data
 
         public async Task<Employee> GetEmployee(int id)
         {
-            return await _context.Employees.Include(r => r.Relatives)
-                .FirstOrDefaultAsync(e => e.Id==id);
+            return await _context.Employees
+                .Include(r => r.Relatives)
+                .ThenInclude(rel=>rel.RelationTypeCatalog)
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<Relative> GetRelative(int id)

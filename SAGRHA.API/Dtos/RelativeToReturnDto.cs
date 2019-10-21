@@ -11,7 +11,6 @@ namespace SAGRHA.API.Dtos
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Dni { get; set; }
-        public string Relationship { get; set; }
-        public int RelationTypeCatalogId { get; set; }
+        public RelationTypeDto Relationship { get; set; }
     }
 }

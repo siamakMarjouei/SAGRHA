@@ -14,6 +14,5 @@ namespace SAGRHA.API.Models
         public Employee Employee { get; set; }
         public int EmployeeId { get; set; }
         public RelationTypeCatalog RelationTypeCatalog { get; set; }
-        public int RelationTypeCatalogId { get; set; }   
     }
 }
