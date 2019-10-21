@@ -2,3 +2,6 @@ ER-SAGRHA-DB.mwb
 ERDB.mwb
 ERDB2.mwb
 ERDB.mwb.bak
+/SAGRHA.API/.vs/*
+/SAGRHA.API/appsettings.json
+/SAGRHA.API/bin/*
