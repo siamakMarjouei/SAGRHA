@@ -29,7 +29,7 @@ namespace SAGRHA.API.Helpers
             .ForMember(dest => dest.Age,
             opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()))
             .ForMember(dest => dest.Relationship,
-            opt => opt.MapFrom(src => src.RelationTypeCatalog));
+            opt => opt.MapFrom(src => src.RelationTypeCatalog.RelationType));
 
             CreateMap<RelationTypeCatalog, RelationTypeDto>()
                 .ForMember(dest => dest.RelationType,

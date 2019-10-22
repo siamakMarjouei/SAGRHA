@@ -11,7 +11,7 @@ namespace SAGRHA.API.Data
         public static void SeedUsers(DataContext context)
         {
             var employeesId = new List<int>();
-            var RelationTypeId = new List<int>();
+            var relationTypeId = new List<int>();
             if (!context.Users.Any() && !context.Employees.Any() && !context.Relatives.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
@@ -46,17 +46,18 @@ namespace SAGRHA.API.Data
                 foreach (var relationType in relationTypeCatalogData)
                 {
                     context.RelationTypes.Add(relationType);
-                    RelationTypeId.Add(relationType.Id);
+                    relationTypeId.Add(relationType.Id);
                 }
 
                 context.SaveChanges();
-
+                var random = new Random();
                 foreach (var relative in relatives)
                 {
-                    var random = new Random();
 
-                    relative.EmployeeId= random.Next(employeesId.Min(),employeesId.Max());
-                    //relative.relationTypeCatalogId= random.Next(employeesId.Min(),employeesId.Max());
+                    // relative.EmployeeId = random.Next(employeesId.Min(), employeesId.Max());
+                    // relative.RelationTypeCatalogId = random.Next(relationTypeId.Min(), relationTypeId.Max());
+                    relative.EmployeeId = 1;
+                    relative.RelationTypeCatalogId= 1;
                     context.Relatives.Add(relative);
                 }
 
