@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -9,6 +10,8 @@ namespace SAGRHA.API.Data
     {
         public static void SeedUsers(DataContext context)
         {
+            var employeesId = new List<int>();
+            var RelationTypeId = new List<int>();
             if (!context.Users.Any() && !context.Employees.Any() && !context.Relatives.Any())
             {
                 var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
@@ -37,15 +40,23 @@ namespace SAGRHA.API.Data
                 foreach (var employee in employees)
                 {
                     context.Employees.Add(employee);
+                    employeesId.Add(employee.Id);
                 }
 
                 foreach (var relationType in relationTypeCatalogData)
                 {
                     context.RelationTypes.Add(relationType);
+                    RelationTypeId.Add(relationType.Id);
                 }
+
+                context.SaveChanges();
 
                 foreach (var relative in relatives)
                 {
+                    var random = new Random();
+
+                    relative.EmployeeId= random.Next(employeesId.Min(),employeesId.Max());
+                    //relative.relationTypeCatalogId= random.Next(employeesId.Min(),employeesId.Max());
                     context.Relatives.Add(relative);
                 }
 

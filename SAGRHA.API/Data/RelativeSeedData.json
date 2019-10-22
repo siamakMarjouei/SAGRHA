@@ -6,8 +6,8 @@
       "dni": "(864) 506-3234",
       "phone": "+1 (826) 446-3409",
       "address": "264 Commercial Street, Gordon, New Jersey, 2622",
-      "EmployeeId":"1",
-      "RelationTypeCatalogId":"1"
+      "EmployeeId":"11",
+      "RelationTypeCatalogId":"9"
     },
     {
         "name": "Pablo",
@@ -16,8 +16,8 @@
         "dni": "(964) 506-3234",
         "phone": "+1 (826) 446-3409",
         "address": "264 Commercial Street, Gordon, New Jersey, 2622",
-        "EmployeeId":"3",
-        "RelationTypeCatalogId":"3"
+        "EmployeeId":"12",
+        "RelationTypeCatalogId":"10"
     },
     {
         "name": "Pame",
@@ -26,27 +26,7 @@
         "dni": "(864) 506-3234",
         "phone": "+1 (826) 446-3409",
         "address": "264 Commercial Street, Gordon, New Jersey, 2622",
-        "EmployeeId":"2",
-        "RelationTypeCatalogId":"3"
-    },
-    {
-        "name": "dani",
-        "gender": "Female",
-        "dateofbirth": "2004-04-03",
-        "dni": "(864) 506-3234",
-        "phone": "+1 (826) 446-3409",
-        "address": "264 Commercial Street, Gordon, New Jersey, 2622",
-        "EmployeeId":"1",
-        "RelationTypeCatalogId":"2"
-    },
-    {
-        "name": "Diego",
-        "gender": "male",
-        "dateofbirth": "2004-04-03",
-        "dni": "(864) 506-3234",
-        "phone": "+1 (826) 446-3409",
-        "address": "264 Commercial Street, Gordon, New Jersey, 2622",
-        "EmployeeId":"1",
-        "RelationTypeCatalogId":"1"
+        "EmployeeId":"11",
+        "RelationTypeCatalogId":"11"
     }
   ]
