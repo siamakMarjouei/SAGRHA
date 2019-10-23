@@ -26,6 +26,12 @@ namespace SAGRHA.API.Data
                 var relativeData = System.IO.File.ReadAllText("Data/RelativeSeedData.json");
                 var relatives = JsonConvert.DeserializeObject<List<Relative>>(relativeData);
 
+                var insuranceData = System.IO.File.ReadAllText("Data/InsuranceSeedData.json");
+                var insurances = JsonConvert.DeserializeObject<List<InsuranceCatalog>>(insuranceData);
+
+                var pensionFundData = System.IO.File.ReadAllText("Data/PensionFundSeedData.json");
+                var pensionFunds = JsonConvert.DeserializeObject<List<PensionFund>>(pensionFundData);
+
                 foreach (var user in users)
                 {
                     byte[] passwordHash, passwordSalt;
@@ -48,7 +54,14 @@ namespace SAGRHA.API.Data
                     context.RelationTypes.Add(relationType);
                     relationTypeId.Add(relationType.Id);
                 }
-
+                foreach (var insurance in insurances)
+                {
+                    context.Insurances.Add(insurance);
+                }
+                foreach (var pensionfund in pensionFunds)
+                {
+                    context.PensionFunds.Add(pensionfund);
+                }
                 context.SaveChanges();
                 var random = new Random();
                 foreach (var relative in relatives)
