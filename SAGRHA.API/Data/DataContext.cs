@@ -13,6 +13,8 @@ namespace SAGRHA.API.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Relative> Relatives { get; set; }
         public DbSet<RelationTypeCatalog> RelationTypes { get; set; }
+        public DbSet<InsuranceCatalog> Insurances { get; set; }
+        public DbSet<PensionFund> PensionFunds { get; set; }
       
     }
 }
