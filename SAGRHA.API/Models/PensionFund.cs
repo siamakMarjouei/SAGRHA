@@ -6,6 +6,7 @@ namespace SAGRHA.API.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<EmployeePensionFund> EmployeePensionFunds { get; set; }
+
     }
 }

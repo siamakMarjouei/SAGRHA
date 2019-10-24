@@ -3,9 +3,14 @@ using SAGRHA.API.Models;
 
 namespace SAGRHA.API.Data
 {
-    public class DataContext:DbContext
+    public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) {}
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<EmployeeInsurance>().HasKey(sc => new { sc.EmployeeId, sc.InsuranceId });
+            modelBuilder.Entity<EmployeePensionFund>().HasKey(sc => new { sc.EmployeeId, sc.PensionFundId });
+        }
 
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
@@ -15,6 +20,8 @@ namespace SAGRHA.API.Data
         public DbSet<RelationTypeCatalog> RelationTypes { get; set; }
         public DbSet<InsuranceCatalog> Insurances { get; set; }
         public DbSet<PensionFund> PensionFunds { get; set; }
-      
+        public DbSet<EmployeeInsurance> InsuranceContracts { get; set; }
+        public DbSet<EmployeePensionFund> Affiliations { get; set; }
+
     }
 }
