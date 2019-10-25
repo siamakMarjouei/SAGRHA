@@ -8,8 +8,8 @@ namespace SAGRHA.API.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EmployeeInsurance>().HasKey(sc => new { sc.EmployeeId, sc.InsuranceId });
             modelBuilder.Entity<EmployeePensionFund>().HasKey(sc => new { sc.EmployeeId, sc.PensionFundId });
+            modelBuilder.Entity<EmployeeInsurance>().HasKey(sc => new { sc.EmployeeId, sc.InsuranceCatalogId });
         }
 
         public DbSet<Value> Values { get; set; }

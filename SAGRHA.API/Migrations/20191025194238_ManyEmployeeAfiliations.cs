@@ -64,13 +64,12 @@ namespace SAGRHA.API.Migrations
                 columns: table => new
                 {
                     EmployeeId = table.Column<int>(nullable: false),
-                    InsuranceId = table.Column<int>(nullable: false),
-                    InsuranceCatalogId = table.Column<int>(nullable: true),
+                    InsuranceCatalogId = table.Column<int>(nullable: false),
                     Enrollment = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InsuranceContracts", x => new { x.EmployeeId, x.InsuranceId });
+                    table.PrimaryKey("PK_InsuranceContracts", x => new { x.EmployeeId, x.InsuranceCatalogId });
                     table.ForeignKey(
                         name: "FK_InsuranceContracts_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -82,7 +81,7 @@ namespace SAGRHA.API.Migrations
                         column: x => x.InsuranceCatalogId,
                         principalTable: "Insurances",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

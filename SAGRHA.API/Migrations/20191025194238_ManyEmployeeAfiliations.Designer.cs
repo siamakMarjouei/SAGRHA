@@ -9,7 +9,7 @@ using SAGRHA.API.Data;
 namespace SAGRHA.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191024204207_ManyEmployeeAfiliations")]
+    [Migration("20191025194238_ManyEmployeeAfiliations")]
     partial class ManyEmployeeAfiliations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,13 +61,11 @@ namespace SAGRHA.API.Migrations
                 {
                     b.Property<int>("EmployeeId");
 
-                    b.Property<int>("InsuranceId");
+                    b.Property<int>("InsuranceCatalogId");
 
                     b.Property<string>("Enrollment");
 
-                    b.Property<int?>("InsuranceCatalogId");
-
-                    b.HasKey("EmployeeId", "InsuranceId");
+                    b.HasKey("EmployeeId", "InsuranceCatalogId");
 
                     b.HasIndex("InsuranceCatalogId");
 
@@ -234,7 +232,8 @@ namespace SAGRHA.API.Migrations
 
                     b.HasOne("SAGRHA.API.Models.InsuranceCatalog", "InsuranceCatalog")
                         .WithMany("EmployeeInsurances")
-                        .HasForeignKey("InsuranceCatalogId");
+                        .HasForeignKey("InsuranceCatalogId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SAGRHA.API.Models.EmployeePensionFund", b =>
